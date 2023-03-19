@@ -5,7 +5,6 @@ load('ext://namespace', 'namespace_create', 'namespace_inject')
 namespace_create(namespace)
 
 k8s_yaml(namespace_inject(read_file('requirements/requirements.yaml'), namespace))
-# spin up NSQ
 
 # Deploy: tell Tilt what YAML to deploy
 # k8s_yaml('./kube_files/db-bootstrap',
@@ -28,3 +27,6 @@ k8s_yaml(namespace_inject(read_file('requirements/requirements.yaml'), namespace
 # Watch: tell Tilt how to connect locally (optional)
 # k8s_resource('receiver', port_forwards=8000)
 # k8s_resource('frontend', port_forwards=8081)
+
+# load up face-recognition
+k8s_yaml(namespace_inject(read_file('../face-recognition-service/manifests/face_recognition_testing.yaml'), namespace))
