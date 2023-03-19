@@ -1,0 +1,18 @@
+# three node (two workers) cluster config
+kind: Cluster
+name: kube-facerecog-test-cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+  - role: worker
+    extraMounts:
+      - hostPath: /Users/skarlso/temp/known_people
+        containerPath: /known_people
+      - hostPath: /Users/skarlso/temp/unknown_people
+        containerPath: /unknown_people
+  - role: worker
+    extraMounts:
+      - hostPath: /Users/skarlso/temp/known_people
+        containerPath: /known_people
+      - hostPath: /Users/skarlso/temp/unknown_people
+        containerPath: /unknown_people
