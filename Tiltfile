@@ -1,6 +1,8 @@
+# -*- mode: Starlark -*-
+
 # spin up MYSQL
 
-namespace='face-recog'
+namespace='default'
 load('ext://namespace', 'namespace_create', 'namespace_inject')
 namespace_create(namespace)
 
@@ -28,5 +30,6 @@ k8s_yaml(namespace_inject(read_file('requirements/requirements.yaml'), namespace
 # k8s_resource('receiver', port_forwards=8000)
 # k8s_resource('frontend', port_forwards=8081)
 
-# load up face-recognition
-k8s_yaml(namespace_inject(read_file('../face-recognition-service/manifests/face_recognition_testing.yaml'), namespace))
+include('../image-processor-service/Tiltfile')
+include('../receiver-service/Tiltfile')
+include('../frontend-service/Tiltfile')
