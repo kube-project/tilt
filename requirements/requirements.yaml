@@ -240,6 +240,13 @@ spec:
           hostPort: 4150
         - containerPort: 4151
           hostPort: 4151
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "750Mi"
+          requests:
+            cpu: "300m"
+            memory: "750Mi"
 ---
 apiVersion: v1
 kind: Secret
