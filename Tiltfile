@@ -33,3 +33,7 @@ k8s_yaml(namespace_inject(read_file('requirements/requirements.yaml'), namespace
 include('../image-processor-service/Tiltfile')
 include('../receiver-service/Tiltfile')
 include('../frontend-service/Tiltfile')
+
+# We apply the face recognition service as is, we don't want to track that because
+# it takes a long time to build it.
+k8s_yaml('../face-recognition-service/manifests/face_recognition_combined.yaml')
