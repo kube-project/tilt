@@ -8,3 +8,21 @@ dlib takes minutes to build and install.
 
 Caveat: The current Python Libraries face recognition might not be perfect in
 large images.
+
+## How to use it:
+
+Create a kind cluster by running:
+
+```
+kind create cluster --config kind_test_cluster.yaml
+```
+
+This will create some volumes for the kind cluster which we'll use later to drop in images into.
+
+Once the cluster is running, simply run:
+
+```
+tilt up
+```
+
+If everything went fine, when opening the tilt dashboard you should see lots of greens.
